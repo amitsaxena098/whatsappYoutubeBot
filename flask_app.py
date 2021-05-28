@@ -41,7 +41,7 @@ def reply_whatsapp():
             videos.append("% s (% s) (% s) (% s)" % (result["snippet"]["title"], result["id"]["videoId"], result['snippet']['description'], result['snippet']['thumbnails']['high']['url']))
             response = MessagingResponse()
             vlnk = "https://www.youtubepp.com/watch?v=" + result["id"]["videoId"]
-            msg = response.message("*Title:* " + result['snippet']['title'] + "\n\n*VideoLink:* " + "```" + "https://www.youtube.com/watch?v=" + result["id"]["videoId"] + "```" + "\n\n*Download Here:* ```" + vlnk + "```\n\n*Developed by:* ```@devilHail YO```")
+            msg = response.message("*Title:* " + result['snippet']['title'] + "\n*Channel:* " + result['snippet']['channelTitle'] + "\n\n*VideoLink:* " + "```" + "https://www.youtube.com/watch?v=" + result["id"]["videoId"] + "```" + "\n\n*Download Here:* ```" + vlnk + "```\n\n*Developed by:* ```@devilHail YO```")
             msg.media(result['snippet']['thumbnails']['high']['url'])
             return str(response)
 
