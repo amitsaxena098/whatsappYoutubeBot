@@ -26,7 +26,7 @@ def reply_whatsapp():
     req_body_lc = request_body.lower()
     if(req_body_lc == "help"):
         response = MessagingResponse()
-        msg = response.message("Hey fella! Thanks for using my bot.\nBelow are the commands that is helpful to operate this bot.\n")
+        msg = response.message("*Hey fella!*\nThanks for using my bot.\nBelow are the commands that are helpful to operate this bot.\n# Send any keyword, and the bot will reply with a video that best matches the keyword.\n# Send a youtube video link and get its download link.\n#")
         return str(response)
     #num_media = int(request.values.get("NumMedia"))
     #if not num_media:
