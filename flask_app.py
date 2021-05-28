@@ -39,7 +39,7 @@ def reply_whatsapp():
             videos.append("% s (% s) (% s) (% s)" % (result["snippet"]["title"], result["id"]["videoId"], result['snippet']['description'], result['snippet']['thumbnails']['high']['url']))
             response = MessagingResponse()
             vlnk = "https://www.youtubepp.com/watch?v=" + result["id"]["videoId"]
-            d_search = youtube_object.videos().list(q = request_body, type = "video", part = "contentDetails", maxResults = max_results).execute()
+            d_search = youtube_object.videos().list(id = result["id"]["videoId"], type = "video", part = "contentDetails", maxResults = max_results).execute()
             print(str(d_search))
             duration = isodate.parse_duration(str(result["contentDetails"]["duration"]))
             msg = response.message("*Title:* " + result['snippet']['title'] + "\n*Duration:* " + duration + "\n*Views:* " + result['statistics']['viewCount'] + "\n*Channel:* " + result['snippet']['channelTitle'] + "\n\n*VideoLink:* " + "```" + "https://www.youtube.com/watch?v=" + result["id"]["videoId"] + "```" + "\n\n*Download Here:* ```" + vlnk + "```\n\n*Developed by:* ```@devilHail YO```")
