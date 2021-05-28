@@ -44,7 +44,7 @@ def reply_whatsapp():
             view_cnt = (d_search[0])["statistics"]["viewCount"]
             likes_cnt = (d_search[0])["statistics"]["likeCount"]
             dislikes_cnt = (d_search[0])["statistics"]["dislikeCount"]
-            msg = response.message("*Title:* " + result['snippet']['title'] + "\n*Duration:* " + str(duration) + "\n*Views:* " + str(view_cnt) + "\n👍 : " + str(likes_cnt) + "\n👎 :" + str(dislikes_cnt) + "\n*Channel:* " + result['snippet']['channelTitle'] + "\n\n*VideoLink:* " + "```" + "https://www.youtube.com/watch?v=" + result["id"]["videoId"] + "```" + "\n\n*Download Here:* ```" + vlnk + "```\n\n*Developed by:* ```@devilHail YO```")
+            msg = response.message("*Title:* " + result['snippet']['title'] + "\n*Duration:* " + str(duration) + "\n*Views:* " + str(view_cnt) + "\n👍 : " + str(likes_cnt) + "\n👎 :" + str(dislikes_cnt) + "\n*Channel:* " + result['snippet']['channelTitle'] + "\n\n*VideoLink:* " + "```" + "https://www.youtube.com/watch?v=" + result["id"]["videoId"] + "```" + "\n\n*Download Here:* ```" + vlnk + "```\n\n*Developed by:*\n```Amit Saxena ( IIT Madras )```")
             msg.media(result['snippet']['thumbnails']['high']['url'])
             return str(response)
 
