@@ -30,7 +30,7 @@ def reply_whatsapp():
     #if not num_media:
     #    msg = response.message("Send us an image!")
     #else:
-    search_keyword = youtube_object.search().list(q = request_body, type = "video", part = "id, snippet, contentDetails, statistics", maxResults = max_results).execute()
+    search_keyword = youtube_object.search().list(q = request_body, type = "video", part = "id, snippet", maxResults = max_results).execute()
     # extracting the results from search response 
     results = search_keyword.get("items", [])
     videos = []
