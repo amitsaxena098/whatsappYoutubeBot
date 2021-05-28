@@ -23,6 +23,11 @@ def reply_whatsapp():
     request_body = request.form.get('Body')
     response = MessagingResponse()
     print(request_body)
+    req_body_lc = request_body.lower()
+    if(req_body_lc == "help"):
+        response = MessagingResponse()
+        msg = response.message("Hey fella! Thanks for using my bot.\nBelow are the commands that is helpful to operate this bot.\n")
+        return str(response)
     #num_media = int(request.values.get("NumMedia"))
     #if not num_media:
     #    msg = response.message("Send us an image!")
