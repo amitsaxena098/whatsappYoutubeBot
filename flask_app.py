@@ -41,7 +41,8 @@ def reply_whatsapp():
             vlnk = "https://www.youtubepp.com/watch?v=" + result["id"]["videoId"]
             d_search = youtube_object.videos().list(id = result["id"]["videoId"], part = "contentDetails, statistics", maxResults = max_results).execute().get("items", [])
             duration = isodate.parse_duration(str( (d_search[0])["contentDetails"]["duration"]))
-            msg = response.message("*Title:* " + result['snippet']['title'] + "\n*Duration:* " + str(duration) + "\n*Views:* " + str([d_search(0)]['statistics']['viewCount']) + "\n*Channel:* " + result['snippet']['channelTitle'] + "\n\n*VideoLink:* " + "```" + "https://www.youtube.com/watch?v=" + result["id"]["videoId"] + "```" + "\n\n*Download Here:* ```" + vlnk + "```\n\n*Developed by:* ```@devilHail YO```")
+            view_cnt = (d_search[0])["statistics"]["viewCount"]
+            msg = response.message("*Title:* " + result['snippet']['title'] + "\n*Duration:* " + str(duration) + "\n*Views:* " + str(view_cnt) + "\n*Channel:* " + result['snippet']['channelTitle'] + "\n\n*VideoLink:* " + "```" + "https://www.youtube.com/watch?v=" + result["id"]["videoId"] + "```" + "\n\n*Download Here:* ```" + vlnk + "```\n\n*Developed by:* ```@devilHail YO```")
             msg.media(result['snippet']['thumbnails']['high']['url'])
             return str(response)
 
