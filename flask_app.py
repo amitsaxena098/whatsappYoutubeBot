@@ -43,8 +43,8 @@ def reply_whatsapp():
         return str(response)
     if( len(request_body.split("#")) > 1 and (request_body.split("#"))[0] != ''):
         req_body_lc = (request_body.split("#"))[1]
-        max_results = int( (request_body.split("#"))[0] )
-        search_keyword = youtube_object.search().list(q = request_body, type = "video", part = "id, snippet", maxResults = max_results).execute()
+       # max_results = int( (request_body.split("#"))[0] )
+        search_keyword = youtube_object.search().list(q = request_body, type = "video", part = "id, snippet", maxResults = int( (request_body.split("#"))[0] )).execute()
         results = search_keyword.get("items", [])
         videos = ""
         for result in results:
