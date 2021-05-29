@@ -30,8 +30,20 @@ def reply_whatsapp():
     #if not num_media:
     #    msg = response.message("Send us an image!")
     #else:
-    if( len(request_body.split("#")) > 1):
+    if( len(request_body.split("#")) > 1 and (request_body.split("#"))[0] == ''):
         req_body_lc = (request_body.split("#"))[1]
+        search_keyword = youtube_object.search().list(q = request_body, type = "video", part = "id, snippet", maxResults = max_results).execute()
+        results = search_keyword.get("items", [])
+        videos = ""
+        for result in results:
+            if result['id']['kind'] == "youtube#video":
+                videos += "*" + result["id"]["videoId"] + "* : " + result["snippet"]["title"] + "\n"
+        response = MessagingResponse()
+        msg = response.message(videos)
+        return str(response)
+    if( len(request_body.split("#")) > 1 and (request_body.split("#"))[0] != ''):
+        req_body_lc = (request_body.split("#"))[1]
+        max_results = int( (request_body.split("#"))[0] )
         search_keyword = youtube_object.search().list(q = request_body, type = "video", part = "id, snippet", maxResults = max_results).execute()
         results = search_keyword.get("items", [])
         videos = ""
