@@ -24,7 +24,7 @@ def reply_whatsapp():
     req_body_lc = request_body.lower()
     if(req_body_lc == "help"):
         response = MessagingResponse()
-        msg = response.message("*Hey fella!*\nThanks for using my bot.\nBelow are the commands that are helpful to operate this bot.\n\n1. Send any keyword, and the bot will reply with a video that best matches the keyword.\n\n2. Send a youtube video link and get its download link.\n\n3. To receive more than one results, put a # in beginning of your keyword. Example : *#despacito*\n\n4. To specify number of results you want, put a number and # in begining of your keyword. Example : *5#despacito*")
+        msg = response.message("*Hey fella!✌️ *\nThanks for using my bot.\nBelow are the commands that are helpful to operate this bot.\n\n1. Send any keyword, and the bot will reply with a video that best matches the keyword.\n\n2. Send a youtube video link and get its download link.\n\n3. To receive more than one results, put a # in beginning of your keyword. Example : *#despacito*\n\n4. To specify number of results you want, put a number and # in begining of your keyword. Example : *5#despacito*\n\n")
         return str(response)
     #num_media = int(request.values.get("NumMedia"))
     #if not num_media:
@@ -34,10 +34,10 @@ def reply_whatsapp():
         req_body_lc = (request_body.split("#"))[1]
         search_keyword = youtube_object.search().list(q = request_body, type = "video", part = "id, snippet", maxResults = max_results).execute()
         results = search_keyword.get("items", [])
-        videos = "Please find the results below:\n"
+        videos = "Please find the results below:\n\n"
         for result in results:
             if result['id']['kind'] == "youtube#video":
-                videos += "*" + result["id"]["videoId"] + "* : " + result["snippet"]["title"] + "\n"
+                videos += "➡️  *" + result["id"]["videoId"] + "* : " + result["snippet"]["title"] + "\n"
         videos += "\nReply with the video ID for full details"
         response = MessagingResponse()
         msg = response.message(videos)
@@ -50,7 +50,7 @@ def reply_whatsapp():
         videos = "Please find the results below:\n"
         for result in results:
             if result['id']['kind'] == "youtube#video":
-                videos += "*" + result["id"]["videoId"] + "* : " + result["snippet"]["title"] + "\n"
+                videos += "➡️  *" + result["id"]["videoId"] + "* : " + result["snippet"]["title"] + "\n"
         videos += "\nReply with the video ID for full details"
         response = MessagingResponse()
         msg = response.message(videos)
@@ -69,7 +69,7 @@ def reply_whatsapp():
             view_cnt = (d_search[0])["statistics"]["viewCount"]
             likes_cnt = (d_search[0])["statistics"]["likeCount"]
             dislikes_cnt = (d_search[0])["statistics"]["dislikeCount"]
-            msg = response.message("*Title:* " + result['snippet']['title'] + "\n*Duration:* " + str(duration) + "\n*Views:* " + str(view_cnt) + "\n👍 : " + str(likes_cnt) + "\n👎 : " + str(dislikes_cnt) + "\n*Channel:* " + result['snippet']['channelTitle'] + "\n\n*VideoLink:* " + "```" + "https://www.youtube.com/watch?v=" + result["id"]["videoId"] + "```" + "\n\n*Download Here:* ```" + vlnk + "```\nReply with *help* to receive command list.\n\n*Developed by:*\n```Amit Saxena ( IIT Madras )```")
+            msg = response.message("*Title:* " + result['snippet']['title'] + "\n*Duration:* " + str(duration) + "\n*Views:* " + str(view_cnt) + "\n👍 : " + str(likes_cnt) + "\n👎 : " + str(dislikes_cnt) + "\n*Channel:* " + result['snippet']['channelTitle'] + "\n\n*VideoLink:* " + "```" + "https://www.youtube.com/watch?v=" + result["id"]["videoId"] + "```" + "\n\n*Download Here:* ```" + vlnk + "```\n\nReply with *help* to receive command list.\n\n*Developed by:*\n```Amit Saxena ( IIT Madras )```")
             msg.media(result['snippet']['thumbnails']['high']['url'])
             return str(response)
 
