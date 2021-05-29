@@ -7,7 +7,7 @@ import isodate
 DEVELOPER_KEY = "AIzaSyDjXF69w5hwq1tLbJYhe-NaMhstpp14xbE"
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
-max_results = 3
+max_results = 10
 
 # creating Youtube Resource Object 
 youtube_object = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey = DEVELOPER_KEY)
@@ -30,6 +30,17 @@ def reply_whatsapp():
     #if not num_media:
     #    msg = response.message("Send us an image!")
     #else:
+    if( len(request_body.split("#")) > 1):
+        req_body_lc = (request_body.split("#"))[1]
+        search_keyword = youtube_object.search().list(q = request_body, type = "video", part = "id, snippet", maxResults = max_results).execute()
+        results = search_keyword.get("items", [])
+        videos = ""
+        for result in results:
+            if result['id']['kind'] == "youtube#video":
+                videos = "*" + result["id"]["videoId"] + "* : " + result["snippet"]["title"] + "\n"
+        response.MessagingResponse()
+        msg = response.message(videos)
+        return str(response)
     search_keyword = youtube_object.search().list(q = request_body, type = "video", part = "id, snippet", maxResults = max_results).execute()
     # extracting the results from search response 
     results = search_keyword.get("items", [])
@@ -44,7 +55,7 @@ def reply_whatsapp():
             view_cnt = (d_search[0])["statistics"]["viewCount"]
             likes_cnt = (d_search[0])["statistics"]["likeCount"]
             dislikes_cnt = (d_search[0])["statistics"]["dislikeCount"]
-            msg = response.message("*Title:* " + result['snippet']['title'] + "\n*Duration:* " + str(duration) + "\n*Views:* " + str(view_cnt) + "\n👍 : " + str(likes_cnt) + "\n👎 :" + str(dislikes_cnt) + "\n*Channel:* " + result['snippet']['channelTitle'] + "\n\n*VideoLink:* " + "```" + "https://www.youtube.com/watch?v=" + result["id"]["videoId"] + "```" + "\n\n*Download Here:* ```" + vlnk + "```\n\n*Developed by:*\n```Amit Saxena ( IIT Madras )```")
+            msg = response.message("*Title:* " + result['snippet']['title'] + "\n*Duration:* " + str(duration) + "\n*Views:* " + str(view_cnt) + "\n👍 : " + str(likes_cnt) + "\n👎 : " + str(dislikes_cnt) + "\n*Channel:* " + result['snippet']['channelTitle'] + "\n\n*VideoLink:* " + "```" + "https://www.youtube.com/watch?v=" + result["id"]["videoId"] + "```" + "\n\n*Download Here:* ```" + vlnk + "```\n\n*Developed by:*\n```Amit Saxena ( IIT Madras )```")
             msg.media(result['snippet']['thumbnails']['high']['url'])
             return str(response)
 
