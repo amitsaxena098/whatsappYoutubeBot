@@ -37,8 +37,8 @@ def reply_whatsapp():
         videos = ""
         for result in results:
             if result['id']['kind'] == "youtube#video":
-                videos = "*" + result["id"]["videoId"] + "* : " + result["snippet"]["title"] + "\n"
-        response.MessagingResponse()
+                videos += "*" + result["id"]["videoId"] + "* : " + result["snippet"]["title"] + "\n"
+        response = MessagingResponse()
         msg = response.message(videos)
         return str(response)
     search_keyword = youtube_object.search().list(q = request_body, type = "video", part = "id, snippet", maxResults = max_results).execute()
