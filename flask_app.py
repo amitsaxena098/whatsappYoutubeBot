@@ -5,7 +5,7 @@ from apiclient.discovery import build
 import isodate
 
 # Arguments that need to passed to the build function 
-DEVELOPER_KEY = "AIzaSyDjXF69w5hwq1tLbJYhe-NaMhstpp14xbE"
+DEVELOPER_KEY = "your-youtube-api-key"
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 max_results = 10
