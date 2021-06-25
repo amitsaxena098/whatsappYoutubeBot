@@ -3,3 +3,5 @@ mms/
 mmsmessenger-venv/
 *.pyc
 api.key
+manage.py
+search.py
