@@ -4,7 +4,7 @@ from apiclient.discovery import build
 import isodate
 
 # Arguments that need to passed to the build function 
-DEVELOPER_KEY = "AIzaSyDjXF69w5hwq1tLbJYhe-NaMhstpp14xbE"
+DEVELOPER_KEY = "your-youtube-api-key"
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 max_results = 10
@@ -26,10 +26,6 @@ def reply_whatsapp():
         response = MessagingResponse()
         msg = response.message("*Hey fella!✌️ *\nThanks for using my bot.\nBelow are the commands that are helpful to operate this bot.\n\n1. Send any keyword, and the bot will reply with a video that best matches the keyword.\n\n2. Send a youtube video link and get its download link.\n\n3. To receive more than one results, put a # in beginning of your keyword. Example : *#despacito*\n\n4. To specify number of results you want, put a number and # in begining of your keyword. Example : *5#despacito*\n\n")
         return str(response)
-    #num_media = int(request.values.get("NumMedia"))
-    #if not num_media:
-    #    msg = response.message("Send us an image!")
-    #else:
     if( len(request_body.split("#")) > 1 and (request_body.split("#"))[0] == ''):
         req_body_lc = (request_body.split("#"))[1]
         search_keyword = youtube_object.search().list(q = request_body, type = "video", part = "id, snippet", maxResults = max_results).execute()
