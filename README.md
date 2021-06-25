@@ -47,7 +47,7 @@ Point your Twillio to heroku app.
 
 ## ScreenCaptures
 
-![Alt Text](https://s6.gifyu.com/images/WhatsApp.md.gif)
+![Alt Text](https://s6.gifyu.com/images/WhatsApp.gif)
 
 
 ## License
