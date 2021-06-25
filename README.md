@@ -47,7 +47,7 @@ Point your Twillio to heroku app.
 
 ## ScreenCaptures
 
-![Alt Text](https://s6.gifyu.com/images/WhatsApp.gif)
+![Alt Text](https://github.com/amitsaxena098/whatsappYoutubeBot/blob/master/img/ezgif.com-gif-maker-3beeef34b48ead9e2.gif)
 
 
 ## License
