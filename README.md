@@ -47,8 +47,7 @@ Point your Twillio to heroku app.
 
 ## ScreenCaptures
 
-![Alt Text](https://github.com/amitsaxena098/whatsappYoutubeBot/blob/master/img/ezgif.com-gif-maker-3beeef34b48ead9e2.gif)
-
+<img src="https://github.com/amitsaxena098/whatsappYoutubeBot/blob/master/img/ezgif.com-gif-maker-3beeef34b48ead9e2.gif" width="480" height="840">
 
 ## License
 
