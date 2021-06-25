@@ -1,5 +1,5 @@
-MMSMessenger/
-mms/
+MMSMessenger/*
+mms/*
 mmsmessenger-venv/
 *.pyc
 api.key
